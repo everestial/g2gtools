@@ -28,13 +28,13 @@ That's all! We note that you can go out from g2gtools virtual environment anytim
 
 g2gtools is mainly written in python2.7, so if you have anaconda3 installed you will need to set another python2.7 usable environment within ancaconda3 instead of installing anaconda2
 
-     $ conda config --add channels r
-     $ conda config --add channels bioconda
+    $ conda config --add channels r
+    $ conda config --add channels bioconda
     
 To avoid confict with python3
 
-     $ conda create -n py27 python=2.7 anaconda
-     $ conda update conda
+    $ conda create -n py27 python=2.7 anaconda
+    $ conda update conda
 
 To avoid conflicts among dependencies, we highly recommend using conda virtual environment::
 
