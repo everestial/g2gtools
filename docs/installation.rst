@@ -21,7 +21,11 @@ That's all! We note that you can go out from g2gtools virtual environment anytim
     (g2gtools) $ source deactivate
 
 
+
+
+
 **Installation in Anaconda3 - Added by everestial007**
+
 g2gtools is mainly written in python2.7, so if you have anaconda3 installed you will need to set another python2.7 usable environment within ancaconda3 instead of installing anaconda2
 
     $ conda config --add channels r
