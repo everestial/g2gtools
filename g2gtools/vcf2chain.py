@@ -445,8 +445,10 @@ def vcf2chain(input_file, fasta_file, strain, output_file, vcf_keep=False, passe
                                 to_start=0, to_end=lr.sums[0] + lr.last_fragment_size + lr.sums[2], id=c['chrom']))
                     write("\n")
 
-                    for c in lr.chain_entries:
-                        write("\t".join(map(str, c)))
+                    for k in lr.chain_entries: # when running in --diploid mode: for c was returning the variable c as list values .. 
+                        # .. causing type error in write(CHAIN_STRING...... c['chrom'] - this should be dict but was returned as list from ..
+                        # .. proceeding for loop 
+                        write("\t".join(map(str, k)))
                         write("\n")
                     write(str(lr.last_fragment_size))
                     write("\n\n")
