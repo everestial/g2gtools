@@ -72,6 +72,24 @@ def parse_attributes(attributes):
 
     return ret
 
+# Adding a method to parse gff if *.gff is given # added
+def parse_attributes_gff(attributes_gff):
+    """
+    Parse the GTF attribute column and return a dict
+    """
+    if attributes_gff == ".":
+        return OrderedDict()
+
+    ret = OrderedDict()
+    for attribute in attributes_gff.strip().split(";"):
+        if len(attribute):
+            elems = attribute.strip().split('=')
+            key = elems[0]
+            val = ' '.join(elems[1:])       
+            ret[key] = val
+    return ret
+################################### # added new function above this line
+
 
 def parse_gtf_line(line):
     """
@@ -98,7 +116,8 @@ def parse_gtf_line(line):
         'score': None if elem[5] == '.' else float(elem[5]),
         'strand': None if elem[6] == '.' else elem[6].replace('"', ''),
         'frame': None if elem[7] == '.' else elem[7].replace('"', ''),
-        'attributes': parse_attributes(elem[8])
+        'attributes': parse_attributes_gff(elem[8]) if '=' in elem[8] else parse_attributes(elem[8]) # added - to allow gff parsing
+        #'attributes': parse_attributes(elem[8]) # removed
     }
 
     return GTFRecord(**data)
